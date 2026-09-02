@@ -29,6 +29,21 @@
   .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--navy);transition:width .3s ease}
   .nav-link:hover{color:var(--ink)}
   .nav-link:hover::after{width:100%}
+  [id]{scroll-margin-top:96px}
+  .nav-item{position:relative}
+  .submenu-wrap{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:16px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,visibility 0s linear .15s;z-index:60}
+  .submenu-wrap.align-right{left:auto;right:0;transform:none}
+  .submenu-wrap.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .15s ease,visibility 0s linear}
+  .submenu{width:480px;background:var(--card);border:1px solid var(--line);box-shadow:0 26px 54px -22px rgba(10,59,95,.22);padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;transform:translateY(-6px);transition:transform .18s ease}
+  .submenu-wrap.open .submenu{transform:translateY(0)}
+  .submenu-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ocre);margin-bottom:14px}
+  .submenu-link{display:flex;align-items:baseline;gap:10px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-60);text-decoration:none;padding:9px 0;border-bottom:1px solid var(--line-soft);transition:color .2s ease,padding-left .2s ease}
+  .submenu-link:last-child{border-bottom:none}
+  .submenu-link:hover{color:var(--navy);padding-left:4px}
+  .submenu-link .mark{font-family:var(--serif);font-size:16px;color:var(--ocre);min-width:14px}
+  .submenu-desc-title{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--ink);margin:0 0 10px;line-height:1.25}
+  .submenu-desc-text{font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--ink-60);margin:0 0 16px}
+  .submenu-cta{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
   .btn-primary:hover{filter:brightness(1.12)}
   .btn-ghost:hover{background:var(--ink);color:var(--paper)}
   .field:focus{border-bottom-color:var(--navy) !important}
@@ -47,11 +62,120 @@
       <div style="max-width:1240px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px">
         <a href="#top" style="font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:0.05em;text-decoration:none;color:var(--ink)">LAWRE<span style="color:var(--navy)">VAT</span></a>
         <nav style="display:flex;align-items:center;gap:34px;font-family:var(--sans);font-size:14px;font-weight:500">
-          <a href="#expertise" class="nav-link">Expertise</a>
-          <a href="#methode" class="nav-link">Méthode</a>
-          <a href="#chiffres" class="nav-link">Résultats</a>
-          <a href="#cabinet" class="nav-link">Cabinet</a>
-          <a href="#contact" class="nav-link">Contact</a>
+          <div class="nav-item">
+            <a href="#expertise" class="nav-link">Expertise</a>
+            <div class="submenu-wrap">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">Domaines</div>
+                  <a href="#expertise-audit" class="submenu-link"><span class="mark">%</span> Audit TVA</a>
+                  <a href="#expertise-veille" class="submenu-link"><span class="mark">§</span> Veille &amp; conformité</a>
+                  <a href="#expertise-contentieux" class="submenu-link"><span class="mark">€</span> Contentieux</a>
+                  <a href="#expertise-einvoicing" class="submenu-link"><span class="mark">№</span> e-invoicing</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">De l'audit au contentieux</div>
+                  <p class="submenu-desc-text">Nous couvrons l'ensemble du cycle de vie de votre TVA, avec 98% de redressements évités sur les dossiers audités.</p>
+                  <a href="#contact" class="submenu-cta">Prendre rendez-vous <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="#methode" class="nav-link">Méthode</a>
+            <div class="submenu-wrap">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">Notre approche</div>
+                  <a href="#methode-diagnostic" class="submenu-link"><span class="mark">01</span> Diagnostic</a>
+                  <a href="#methode-securisation" class="submenu-link"><span class="mark">02</span> Sécurisation</a>
+                  <a href="#methode-pilotage" class="submenu-link"><span class="mark">03</span> Pilotage continu</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">Une méthode en trois temps</div>
+                  <p class="submenu-desc-text">Diagnostic, sécurisation puis pilotage continu&nbsp;: une veille permanente et un tableau de bord partagé avec vous.</p>
+                  <a href="#methode" class="submenu-cta">Découvrir la méthode <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="#chiffres" class="nav-link">Résultats</a>
+            <div class="submenu-wrap">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">En chiffres</div>
+                  <a href="#chiffres" class="submenu-link">12 ans d'expertise TVA</a>
+                  <a href="#chiffres" class="submenu-link">340+ entreprises accompagnées</a>
+                  <a href="#chiffres" class="submenu-link">98% de redressements évités</a>
+                  <a href="#chiffres" class="submenu-link">48h de délai moyen de réponse</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">Des résultats mesurés</div>
+                  <p class="submenu-desc-text">Chaque mission est suivie d'indicateurs concrets, partagés avec vous à chaque étape.</p>
+                  <a href="#chiffres" class="submenu-cta">Voir les résultats <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="#cabinet" class="nav-link">Cabinet</a>
+            <div class="submenu-wrap">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">Le cabinet</div>
+                  <a href="#cabinet" class="submenu-link">Notre philosophie</a>
+                  <a href="#cabinet-valeurs" class="submenu-link">Nos valeurs</a>
+                  <a href="#contact" class="submenu-link">Rencontrer l'équipe</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">Rigueur, clarté, discrétion</div>
+                  <p class="submenu-desc-text">Des avocats fiscalistes et des ingénieurs réunis pour faire de la conformité un avantage, jamais une contrainte.</p>
+                  <a href="#cabinet" class="submenu-cta">Découvrir le cabinet <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+            <div class="submenu-wrap align-right">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">Nous contacter</div>
+                  <a href="mailto:contact@lawrevat.fr" class="submenu-link">contact@lawrevat.fr</a>
+                  <a href="tel:+33184000000" class="submenu-link">+33 1 84 00 00 00</a>
+                  <a href="#contact" class="submenu-link">12 rue de la Paix, Paris</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">Parlons de votre TVA</div>
+                  <p class="submenu-desc-text">Un premier échange gratuit pour évaluer vos enjeux et vos risques.</p>
+                  <a href="#contact" class="submenu-cta">Prendre rendez-vous <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="brandbook.html" class="nav-link">Brandbook</a>
+            <div class="submenu-wrap align-right">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">Charte de marque</div>
+                  <a href="brandbook.html#logotype" class="submenu-link">Logotype</a>
+                  <a href="brandbook.html#palette" class="submenu-link">Palette</a>
+                  <a href="brandbook.html#typographie" class="submenu-link">Typographie</a>
+                  <a href="brandbook.html#iconographie" class="submenu-link">Iconographie</a>
+                  <a href="brandbook.html#composants" class="submenu-link">Composants d'interface</a>
+                  <a href="brandbook.html#papeterie" class="submenu-link">Papeterie &amp; signature</a>
+                  <a href="brandbook.html#photographie" class="submenu-link">Direction photographique</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">L'identité Lawrevat</div>
+                  <p class="submenu-desc-text">Logo, couleurs, typographie et usages&nbsp;: le guide complet de notre identité de marque.</p>
+                  <a href="brandbook.html" class="submenu-cta">Consulter le brandbook <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
         </nav>
         <div style="display:flex;align-items:center;gap:14px">
           <button onClick="{{ showLogin }}" class="btn-ghost" style="font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--ink);background:transparent;border:1px solid var(--ink);padding:11px 22px;cursor:pointer;transition:all .25s ease">Espace client</button>
@@ -101,22 +225,22 @@
           <p style="font-family:var(--sans);font-size:16px;line-height:1.65;color:rgba(255,255,255,.7);max-width:34ch;margin:0">De l'audit ponctuel au contentieux, nous couvrons l'ensemble du cycle de vie de votre TVA.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16)">
-          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+          <div id="expertise-audit" style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
             <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">%</span>
             <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">Audit TVA</h3>
             <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Cartographie de vos flux et identification des risques, en quelques jours.</p>
           </div>
-          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+          <div id="expertise-veille" style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
             <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">§</span>
             <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">Veille &amp; conformité</h3>
             <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Surveillance continue de la doctrine et de la jurisprudence, traduite en actions.</p>
           </div>
-          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+          <div id="expertise-contentieux" style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
             <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">€</span>
             <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">Contentieux</h3>
             <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Défense de vos intérêts face à l'administration, du rescrit au tribunal.</p>
           </div>
-          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+          <div id="expertise-einvoicing" style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
             <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">№</span>
             <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">e-invoicing</h3>
             <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Mise en conformité à la facturation électronique et au e-reporting.</p>
@@ -134,15 +258,15 @@
         </div>
         <div>
           <div style="display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)">
-            <div style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
+            <div id="methode-diagnostic" style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
               <span style="font-family:var(--serif);font-size:46px;color:var(--navy);line-height:1">01</span>
               <div><h3 style="font-family:var(--serif);font-size:28px;font-weight:500;color:var(--ink);margin:0 0 8px">Diagnostic</h3><p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-60);margin:0;max-width:54ch">Nous analysons vos flux, vos déclarations et vos systèmes pour établir une cartographie précise des risques de TVA.</p></div>
             </div>
-            <div style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
+            <div id="methode-securisation" style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
               <span style="font-family:var(--serif);font-size:46px;color:var(--navy);line-height:1">02</span>
               <div><h3 style="font-family:var(--serif);font-size:28px;font-weight:500;color:var(--ink);margin:0 0 8px">Sécurisation</h3><p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-60);margin:0;max-width:54ch">Nous corrigeons, documentons et fiabilisons vos positions, avec l'appui de nos outils d'analyse automatisée.</p></div>
             </div>
-            <div style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
+            <div id="methode-pilotage" style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
               <span style="font-family:var(--serif);font-size:46px;color:var(--navy);line-height:1">03</span>
               <div><h3 style="font-family:var(--serif);font-size:28px;font-weight:500;color:var(--ink);margin:0 0 8px">Pilotage continu</h3><p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-60);margin:0;max-width:54ch">Une veille permanente et un tableau de bord partagé vous tiennent informés de chaque évolution réglementaire.</p></div>
             </div>
@@ -185,7 +309,7 @@
           <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.16em;color:var(--ocre);margin-bottom:18px">— LE CABINET</div>
           <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(36px,4.4vw,60px);line-height:1.03;color:var(--ink);margin:0 0 24px;max-width:18ch">Un cabinet d'avocats, augmenté par la technologie.</h2>
           <p style="font-family:var(--sans);font-size:17px;line-height:1.7;color:var(--ink-60);max-width:54ch;margin:0 0 22px">Lawrevat réunit des avocats fiscalistes et des ingénieurs autour d'une même conviction&nbsp;: la TVA mérite la rigueur du droit et la fluidité du logiciel. Nous conjuguons les deux pour faire de la conformité un avantage, jamais une contrainte.</p>
-          <div style="display:flex;gap:28px;flex-wrap:wrap">
+          <div id="cabinet-valeurs" style="display:flex;gap:28px;flex-wrap:wrap">
             <span style="font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink)">Rigueur</span>
             <span style="font-family:var(--serif);font-size:23px;color:var(--stone)">·</span>
             <span style="font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink)">Clarté</span>
@@ -304,6 +428,52 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<script>
+(function () {
+  var activeItem = null;
+  var closeTimer = null;
+  var openTimer = null;
+  var CLOSE_DELAY = 220;
+  var SWITCH_DELAY = 160;
+
+  function openItem(item) {
+    var wrap = item.querySelector('.submenu-wrap');
+    if (!wrap) return;
+    clearTimeout(closeTimer);
+    clearTimeout(openTimer);
+    if (activeItem && activeItem !== item) {
+      var oldWrap = activeItem.querySelector('.submenu-wrap');
+      if (oldWrap) oldWrap.classList.remove('open');
+      activeItem = item;
+      openTimer = setTimeout(function () { wrap.classList.add('open'); }, SWITCH_DELAY);
+    } else {
+      activeItem = item;
+      wrap.classList.add('open');
+    }
+  }
+
+  function scheduleClose(item) {
+    clearTimeout(openTimer);
+    closeTimer = setTimeout(function () {
+      var wrap = item.querySelector('.submenu-wrap');
+      if (wrap) wrap.classList.remove('open');
+      if (activeItem === item) activeItem = null;
+    }, CLOSE_DELAY);
+  }
+
+  document.addEventListener('mouseover', function (e) {
+    var item = e.target.closest && e.target.closest('.nav-item');
+    if (!item || item.contains(e.relatedTarget)) return;
+    openItem(item);
+  });
+
+  document.addEventListener('mouseout', function (e) {
+    var item = e.target.closest && e.target.closest('.nav-item');
+    if (!item || item.contains(e.relatedTarget)) return;
+    scheduleClose(item);
+  });
+})();
 </script>
 </body>
 </html>
