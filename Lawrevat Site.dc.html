@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  :root{
+    --ink:#20201B; --ink-60:#514C42; --stone:#8C8678;
+    --paper:#F6F3EA; --panel:#ECE6D9; --card:#FCFBF6;
+    --navy:#0A3B5F; --navy-deep:#06263D; --ocre:#BC5E36; --ocre-deep:#9A4A29;
+    --line:rgba(32,32,27,0.14); --line-soft:rgba(32,32,27,0.08);
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Hanken Grotesk',system-ui,sans-serif;
+    --mono:ui-monospace,'SFMono-Regular',Menlo,monospace;
+  }
+  a{color:inherit}
+  .nav-link{position:relative;color:var(--ink-60);text-decoration:none}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--navy);transition:width .3s ease}
+  .nav-link:hover{color:var(--ink)}
+  .nav-link:hover::after{width:100%}
+  .btn-primary:hover{filter:brightness(1.12)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .field:focus{border-bottom-color:var(--navy) !important}
+  @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh">
+
+  <!-- =================== SITE =================== -->
+  <sc-if value="{{ isSite }}" hint-placeholder-val="{{ true }}">
+  <div>
+
+    <!-- HEADER -->
+    <header style="position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)">
+      <div style="max-width:1240px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+        <a href="#top" style="font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:0.05em;text-decoration:none;color:var(--ink)">LAWRE<span style="color:var(--navy)">VAT</span></a>
+        <nav style="display:flex;align-items:center;gap:34px;font-family:var(--sans);font-size:14px;font-weight:500">
+          <a href="#expertise" class="nav-link">Expertise</a>
+          <a href="#methode" class="nav-link">Méthode</a>
+          <a href="#chiffres" class="nav-link">Résultats</a>
+          <a href="#cabinet" class="nav-link">Cabinet</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:14px">
+          <button onClick="{{ showLogin }}" class="btn-ghost" style="font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--ink);background:transparent;border:1px solid var(--ink);padding:11px 22px;cursor:pointer;transition:all .25s ease">Espace client</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="top" style="max-width:1240px;margin:0 auto;padding:84px 40px 64px">
+      <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center">
+        <div>
+          <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.16em;color:var(--ocre);margin-bottom:28px">— LEGAL TECH · EXPERTISE TVA</div>
+          <h1 style="font-family:var(--serif);font-weight:500;font-size:clamp(48px,6.4vw,92px);line-height:0.98;letter-spacing:-0.02em;color:var(--ink);margin:0 0 28px">L'intelligence juridique de la <span style="font-style:italic;color:var(--navy)">TVA</span>.</h1>
+          <p style="font-family:var(--sans);font-size:19px;line-height:1.65;color:var(--ink-60);max-width:48ch;margin:0 0 38px">Lawrevat associe l'exigence d'un cabinet d'avocats fiscalistes à la précision de la technologie — pour sécuriser, automatiser et clarifier la TVA de votre entreprise.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+            <a href="#contact" class="btn-primary" style="font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#fff;background:var(--navy);padding:17px 34px;text-decoration:none;transition:filter .25s ease">Prendre rendez-vous</a>
+            <a href="#methode" style="font-family:var(--sans);font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px">Découvrir la méthode <span style="font-size:17px">→</span></a>
+          </div>
+        </div>
+        <div style="position:relative">
+          <div style="aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--panel),var(--panel) 13px,transparent 13px,transparent 26px),var(--card);border:1px solid var(--line);display:flex;align-items:flex-end;padding:24px">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--ink-60);background:var(--paper);padding:7px 11px">Photographie — bureau, lumière chaude</span>
+          </div>
+          <div style="position:absolute;left:-26px;bottom:46px;background:var(--navy);color:#fff;padding:22px 26px;max-width:220px;box-shadow:0 22px 48px -24px rgba(10,59,95,.6)">
+            <div style="font-family:var(--serif);font-size:46px;line-height:1">98<span style="font-size:26px">%</span></div>
+            <div style="font-family:var(--sans);font-size:13px;line-height:1.5;color:rgba(255,255,255,.82);margin-top:6px">de redressements évités sur les dossiers audités.</div>
+          </div>
+        </div>
+      </div>
+      <!-- trust strip -->
+      <div style="margin-top:72px;border-top:1px solid var(--line);padding-top:26px;display:flex;align-items:center;gap:40px;flex-wrap:wrap">
+        <span style="font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:var(--stone)">ILS NOUS FONT CONFIANCE</span>
+        <div style="display:flex;gap:40px;flex-wrap:wrap;font-family:var(--serif);font-size:22px;color:var(--ink-60)">
+          <span>Maison Vael</span><span>Groupe Orsène</span><span>Tessier &amp; Cie</span><span>Nordac</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" style="background:var(--ink);color:#fff">
+      <div style="max-width:1240px;margin:0 auto;padding:96px 40px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px">
+          <div>
+            <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.16em;color:var(--ocre);margin-bottom:18px">— NOTRE EXPERTISE</div>
+            <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(36px,4.6vw,64px);line-height:1.02;margin:0;max-width:18ch">Quatre domaines, une seule exigence&nbsp;: la sécurité.</h2>
+          </div>
+          <p style="font-family:var(--sans);font-size:16px;line-height:1.65;color:rgba(255,255,255,.7);max-width:34ch;margin:0">De l'audit ponctuel au contentieux, nous couvrons l'ensemble du cycle de vie de votre TVA.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16)">
+          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+            <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">%</span>
+            <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">Audit TVA</h3>
+            <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Cartographie de vos flux et identification des risques, en quelques jours.</p>
+          </div>
+          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+            <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">§</span>
+            <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">Veille &amp; conformité</h3>
+            <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Surveillance continue de la doctrine et de la jurisprudence, traduite en actions.</p>
+          </div>
+          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+            <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">€</span>
+            <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">Contentieux</h3>
+            <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Défense de vos intérêts face à l'administration, du rescrit au tribunal.</p>
+          </div>
+          <div style="background:var(--ink);padding:40px 30px;display:flex;flex-direction:column;gap:18px;min-height:300px">
+            <span style="font-family:var(--serif);font-size:52px;color:var(--ocre);line-height:1">№</span>
+            <h3 style="font-family:var(--serif);font-size:27px;font-weight:500;margin:0">e-invoicing</h3>
+            <p style="font-family:var(--sans);font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0">Mise en conformité à la facturation électronique et au e-reporting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODE -->
+    <section id="methode" style="max-width:1240px;margin:0 auto;padding:96px 40px">
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start">
+        <div style="position:sticky;top:110px">
+          <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.16em;color:var(--ocre);margin-bottom:14px">— MÉTHODE</div>
+          <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(34px,4vw,52px);line-height:1.04;color:var(--ink);margin:0">Notre approche</h2>
+        </div>
+        <div>
+          <div style="display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)">
+            <div style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
+              <span style="font-family:var(--serif);font-size:46px;color:var(--navy);line-height:1">01</span>
+              <div><h3 style="font-family:var(--serif);font-size:28px;font-weight:500;color:var(--ink);margin:0 0 8px">Diagnostic</h3><p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-60);margin:0;max-width:54ch">Nous analysons vos flux, vos déclarations et vos systèmes pour établir une cartographie précise des risques de TVA.</p></div>
+            </div>
+            <div style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
+              <span style="font-family:var(--serif);font-size:46px;color:var(--navy);line-height:1">02</span>
+              <div><h3 style="font-family:var(--serif);font-size:28px;font-weight:500;color:var(--ink);margin:0 0 8px">Sécurisation</h3><p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-60);margin:0;max-width:54ch">Nous corrigeons, documentons et fiabilisons vos positions, avec l'appui de nos outils d'analyse automatisée.</p></div>
+            </div>
+            <div style="background:var(--paper);padding:36px 34px;display:grid;grid-template-columns:90px 1fr;gap:28px;align-items:baseline">
+              <span style="font-family:var(--serif);font-size:46px;color:var(--navy);line-height:1">03</span>
+              <div><h3 style="font-family:var(--serif);font-size:28px;font-weight:500;color:var(--ink);margin:0 0 8px">Pilotage continu</h3><p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-60);margin:0;max-width:54ch">Une veille permanente et un tableau de bord partagé vous tiennent informés de chaque évolution réglementaire.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHIFFRES -->
+    <section id="chiffres" style="background:var(--panel)">
+      <div style="max-width:1240px;margin:0 auto;padding:84px 40px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:48px">
+          <div>
+            <div style="font-family:var(--serif);font-size:clamp(54px,6vw,82px);color:var(--navy);line-height:1">12<span style="font-size:.5em">ans</span></div>
+            <div style="font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink-60);margin-top:10px">d'expertise dédiée à la TVA.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--serif);font-size:clamp(54px,6vw,82px);color:var(--navy);line-height:1">340<span style="font-size:.5em">+</span></div>
+            <div style="font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink-60);margin-top:10px">entreprises accompagnées.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--serif);font-size:clamp(54px,6vw,82px);color:var(--navy);line-height:1">98<span style="font-size:.5em">%</span></div>
+            <div style="font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink-60);margin-top:10px">de redressements évités sur audit.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--serif);font-size:clamp(54px,6vw,82px);color:var(--navy);line-height:1">48<span style="font-size:.5em">h</span></div>
+            <div style="font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink-60);margin-top:10px">délai moyen de première réponse.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CABINET -->
+    <section id="cabinet" style="max-width:1240px;margin:0 auto;padding:96px 40px">
+      <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center">
+        <div style="aspect-ratio:1/1;background:repeating-linear-gradient(135deg,var(--panel),var(--panel) 13px,transparent 13px,transparent 26px),var(--card);border:1px solid var(--line);display:flex;align-items:flex-end;padding:24px">
+          <span style="font-family:var(--mono);font-size:11px;color:var(--ink-60);background:var(--paper);padding:7px 11px">Portrait — l'équipe Lawrevat</span>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.16em;color:var(--ocre);margin-bottom:18px">— LE CABINET</div>
+          <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(36px,4.4vw,60px);line-height:1.03;color:var(--ink);margin:0 0 24px;max-width:18ch">Un cabinet d'avocats, augmenté par la technologie.</h2>
+          <p style="font-family:var(--sans);font-size:17px;line-height:1.7;color:var(--ink-60);max-width:54ch;margin:0 0 22px">Lawrevat réunit des avocats fiscalistes et des ingénieurs autour d'une même conviction&nbsp;: la TVA mérite la rigueur du droit et la fluidité du logiciel. Nous conjuguons les deux pour faire de la conformité un avantage, jamais une contrainte.</p>
+          <div style="display:flex;gap:28px;flex-wrap:wrap">
+            <span style="font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink)">Rigueur</span>
+            <span style="font-family:var(--serif);font-size:23px;color:var(--stone)">·</span>
+            <span style="font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink)">Clarté</span>
+            <span style="font-family:var(--serif);font-size:23px;color:var(--stone)">·</span>
+            <span style="font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink)">Discrétion</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="max-width:1240px;margin:0 auto;padding:0 40px 96px">
+      <div style="background:var(--ocre);color:#fff;padding:64px 56px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
+        <div>
+          <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(32px,3.6vw,48px);line-height:1.05;margin:0;max-width:20ch">Parlons de votre TVA.</h2>
+          <p style="font-family:var(--sans);font-size:16px;color:rgba(255,255,255,.85);margin:14px 0 0;max-width:42ch">Un premier échange gratuit pour évaluer vos enjeux et vos risques.</p>
+        </div>
+        <a href="#contact" style="font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--ocre);background:#fff;padding:18px 36px;text-decoration:none;white-space:nowrap">Prendre rendez-vous</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" style="background:var(--navy);color:#fff;margin-top:8px">
+      <div style="max-width:1240px;margin:0 auto;padding:84px 40px 48px">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px">
+          <div>
+            <div style="font-family:var(--serif);font-size:34px;font-weight:600;letter-spacing:0.04em">LAWRE<span style="color:#fff;opacity:.55">VAT</span></div>
+            <p style="font-family:var(--sans);font-size:15px;line-height:1.6;color:rgba(255,255,255,.72);max-width:34ch;margin:20px 0 0">Legal tech experte en TVA. Avocats fiscalistes et technologie, au service de votre conformité.</p>
+            <a href="#" onClick="{{ showLogin }}" class="btn-primary" style="display:inline-block;margin-top:28px;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);background:#fff;padding:15px 28px;text-decoration:none;transition:filter .25s ease">Accéder à l'espace client</a>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:rgba(255,255,255,.5);margin-bottom:18px">CONTACT</div>
+            <div style="font-family:var(--sans);font-size:15px;line-height:2;color:rgba(255,255,255,.85)">contact@lawrevat.fr<br>+33 1 84 00 00 00<br>12 rue de la Paix, Paris</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:rgba(255,255,255,.5);margin-bottom:18px">EXPERTISE</div>
+            <div style="font-family:var(--sans);font-size:15px;line-height:2;color:rgba(255,255,255,.85)">Audit TVA<br>Veille &amp; conformité<br>Contentieux<br>e-invoicing</div>
+          </div>
+        </div>
+        <div style="margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55)">
+          <span>© 2026 LAWREVAT — TOUS DROITS RÉSERVÉS</span>
+          <span>MENTIONS LÉGALES · CONFIDENTIALITÉ</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  </sc-if>
+
+  <!-- =================== LOGIN =================== -->
+  <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+  <div style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr">
+    <!-- brand panel -->
+    <div style="background:var(--navy);color:#fff;padding:56px 64px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;opacity:.06;background:repeating-linear-gradient(135deg,#fff,#fff 14px,transparent 14px,transparent 28px);pointer-events:none"></div>
+      <a href="#" onClick="{{ showSite }}" style="position:relative;font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:0.05em;text-decoration:none;color:#fff">LAWRE<span style="opacity:.55">VAT</span></a>
+      <div style="position:relative">
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.16em;color:rgba(255,255,255,.6);margin-bottom:24px">— ESPACE CLIENT SÉCURISÉ</div>
+        <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(34px,3.4vw,52px);line-height:1.05;margin:0;max-width:16ch">Vos dossiers TVA, en toute confidentialité.</h2>
+        <p style="font-family:var(--sans);font-size:16px;line-height:1.6;color:rgba(255,255,255,.72);max-width:40ch;margin:24px 0 0">Suivez vos audits, échangez avec vos avocats et accédez à votre documentation, où que vous soyez.</p>
+      </div>
+      <div style="position:relative;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5)">CHIFFREMENT TLS · DONNÉES HÉBERGÉES EN FRANCE</div>
+    </div>
+    <!-- form panel -->
+    <div style="background:var(--paper);display:flex;align-items:center;justify-content:center;padding:48px">
+      <div style="width:100%;max-width:392px">
+        <a href="#" onClick="{{ showSite }}" style="font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink-60);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:44px"><span style="font-size:16px">←</span> Retour au site</a>
+        <h1 style="font-family:var(--serif);font-weight:500;font-size:44px;line-height:1;color:var(--ink);margin:0 0 10px">Se connecter</h1>
+        <p style="font-family:var(--sans);font-size:15px;color:var(--ink-60);margin:0 0 36px">Accédez à votre espace client Lawrevat.</p>
+
+        <form onSubmit="{{ onSubmit }}">
+          <label style="font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--ink);display:block;margin-bottom:8px">Adresse e-mail</label>
+          <input type="email" required placeholder="prenom.nom@entreprise.fr" class="field" style="width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-bottom:2px solid var(--stone);padding:14px 15px;outline:none;margin-bottom:24px;transition:border-color .2s ease" />
+
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+            <label style="font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--ink)">Mot de passe</label>
+            <a href="#" style="font-family:var(--sans);font-size:12px;color:var(--navy);text-decoration:none">Oublié ?</a>
+          </div>
+          <input type="password" required placeholder="••••••••••" class="field" style="width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-bottom:2px solid var(--stone);padding:14px 15px;outline:none;margin-bottom:22px;transition:border-color .2s ease" />
+
+          <label style="display:flex;align-items:center;gap:10px;font-family:var(--sans);font-size:14px;color:var(--ink-60);margin-bottom:30px;cursor:pointer">
+            <input type="checkbox" style="width:16px;height:16px;accent-color:var(--navy)" /> Rester connecté
+          </label>
+
+          <button type="submit" class="btn-primary" style="width:100%;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#fff;background:var(--navy);border:none;padding:17px;cursor:pointer;transition:filter .25s ease">Se connecter</button>
+        </form>
+
+        <div style="display:flex;align-items:center;gap:16px;margin:28px 0">
+          <div style="flex:1;height:1px;background:var(--line)"></div>
+          <span style="font-family:var(--mono);font-size:11px;color:var(--stone)">OU</span>
+          <div style="flex:1;height:1px;background:var(--line)"></div>
+        </div>
+        <button onClick="{{ onSubmit }}" class="btn-ghost" style="width:100%;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.04em;color:var(--ink);background:transparent;border:1px solid var(--ink);padding:15px;cursor:pointer;transition:all .25s ease">Connexion SSO entreprise</button>
+
+        <p style="font-family:var(--sans);font-size:13px;color:var(--stone);text-align:center;margin:32px 0 0">Pas encore client ? <a href="#" onClick="{{ showSite }}" style="color:var(--navy);text-decoration:none;font-weight:600">Demander un accès</a></p>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1240, &quot;height&quot;: 900 }
+}">
+class Component extends DCLogic {
+  state = { view: 'site' };
+  renderVals() {
+    const view = this.state.view;
+    return {
+      isSite: view === 'site',
+      isLogin: view === 'login',
+      showLogin: (e) => { if (e) e.preventDefault(); this.setState({ view: 'login' }); window.scrollTo(0, 0); },
+      showSite: (e) => { if (e) e.preventDefault(); this.setState({ view: 'site' }); window.scrollTo(0, 0); },
+      onSubmit: (e) => { if (e) e.preventDefault(); alert('Démo — authentification non connectée.'); },
+    };
+  }
+}
+</script>
+</body>
+</html>
