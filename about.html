@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Lawrevat — Legaltech et expertise TVA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    :root{
+      --ink:#20201B; --ink-60:#514C42; --stone:#8C8678;
+      --paper:#F6F3EA; --panel:#ECE6D9; --card:#FCFBF6;
+      --navy:#0A3B5F; --navy-deep:#06263D; --ocre:#BC5E36; --ocre-deep:#9A4A29;
+      --line:rgba(32,32,27,0.14); --line-soft:rgba(32,32,27,0.08);
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Hanken Grotesk',system-ui,sans-serif;
+      --mono:ui-monospace,'SFMono-Regular',Menlo,monospace;
+    }
+    a{color:inherit}
+    .nav-link{position:relative;color:var(--ink-60);text-decoration:none}
+    .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--navy);transition:width .3s ease}
+    .nav-link:hover{color:var(--ink)}
+    .nav-link:hover::after{width:100%}
+    [id]{scroll-margin-top:96px}
+    .nav-item{position:relative}
+    .submenu-wrap{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:16px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,visibility 0s linear .15s;z-index:60}
+    .submenu-wrap.align-right{left:auto;right:0;transform:none}
+    .submenu-wrap.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .15s ease,visibility 0s linear}
+    .submenu{width:480px;background:var(--card);border:1px solid var(--line);box-shadow:0 26px 54px -22px rgba(10,59,95,.22);padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;transform:translateY(-6px);transition:transform .18s ease}
+    .submenu-wrap.open .submenu{transform:translateY(0)}
+    .submenu-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ocre);margin-bottom:14px}
+    .submenu-link{display:flex;align-items:baseline;gap:10px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-60);text-decoration:none;padding:9px 0;border-bottom:1px solid var(--line-soft);transition:color .2s ease,padding-left .2s ease}
+    .submenu-link:last-child{border-bottom:none}
+    .submenu-link:hover{color:var(--navy);padding-left:4px}
+    .submenu-desc-title{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--ink);margin:0 0 10px;line-height:1.25}
+    .submenu-desc-text{font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--ink-60);margin:0 0 16px}
+    .submenu-cta{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .btn-primary:hover{filter:brightness(1.12)}
+    .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .float-img{animation:floatY 6s ease-in-out infinite}
+    @media (prefers-reduced-motion: reduce){.float-img{animation:none}}
+
+    .main-nav {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .main-nav > .nav-item {
+      flex: 0 0 auto;
+    }
+
+    .main-nav .nav-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 8px 18px;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .main-nav .nav-link > span {
+      white-space: nowrap;
+    }
+
+    .site-logo {
+      flex: 0 0 250px;
+      display: block;
+    }
+
+    .site-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-inner > nav {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .header-inner > div:last-child {
+      flex-shrink: 0;
+    }
+
+    /* Quand les cinq intitulés n’ont plus assez de place,
+       le menu passe sous le logo et le bouton. */
+    @media (max-width: 1200px) {
+      .header-inner {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .header-inner > nav {
+        order: 3;
+        flex: 0 0 100%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .main-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div style="background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh">
+
+  <!-- =================== SITE =================== -->
+  <div>
+
+    <!-- HEADER -->
+    <header style="position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)">
+      <div class="header-inner">
+        <a href="index.html" class="site-logo">
+          <img src="logo.png" alt="Lawrevat">
+        </a>
+        <nav class="main-nav">
+          <div class="nav-item">
+            <a href="#expertise" class="nav-link">
+              <span>Nous sommes</span>
+              <span>LAWREVAT</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#expertise" class="nav-link">
+              <span>Vous êtes</span>
+              <span>Praticien de la TVA</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#expertise" class="nav-link">
+              <span>Vous êtes</span>
+              <span>Acteur de la TECH</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#expertise" class="nav-link">
+              <span>Vous êtes</span>
+              <span>Acteur du DROIT</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="#contact" class="nav-link">
+              <span>Contactez</span>
+              <span>Nous</span>
+            </a>
+            <div class="submenu-wrap align-right">
+              <div class="submenu">
+                <div>
+                  <div class="submenu-eyebrow">Nous contacter</div>
+                  <a href="mailto:contact@lawrevat.fr" class="submenu-link">contact@lawrevat.fr</a>
+                  <a href="tel:+33184000000" class="submenu-link">+33 1 84 00 00 00</a>
+                  <a href="#contact" class="submenu-link">12 rue de la Paix, Paris</a>
+                </div>
+                <div>
+                  <div class="submenu-desc-title">Parlons de votre TVA</div>
+                  <p class="submenu-desc-text">Un premier échange gratuit pour évaluer vos enjeux et vos risques.</p>
+                  <a href="#contact" class="submenu-cta">Prendre rendez-vous <span style="font-size:15px">→</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+        <div style="display:flex;align-items:center;gap:14px">
+          <a href="https://lawrevat.io" class="btn-ghost" style="display:inline-block;text-decoration:none;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--ink);background:transparent;border:1px solid var(--ink);padding:11px 22px;cursor:pointer;transition:all .25s ease">Espace client</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="top" style="max-width:1240px;margin:0 auto;padding:84px 40px 64px">
+
+        <div>
+          <div style="font-family:var(--mono);font-size:22px;letter-spacing:0.16em;color:var(--ocre);margin-bottom:28px">— LEGALTECH · EXPERTISE TVA / IT</div>
+          <h1 style="font-family:var(--serif);font-weight:500;font-size:clamp(48px,6.4vw,80px);line-height:0.98;letter-spacing:-0.02em;color:var(--ink);margin:0 0 28px">La <span style="font-style:italic;color:var(--navy)">Technologie</span> au service de la <span style="font-style:italic;color:var(--navy)">TVA</span>.</h1>
+          <p><b>LAWREVAT® est la première LEGALTECH</b> créée en France qui a su organiser au service des nouvelles pratiques numériques du droit de la TVA, une pertinente symbiose entre d’une part la légitimité du droit, le LEGAL et, d’autre part, la puissance de la technologie, la TECH. </p>
+
+          <p>LAWREVAT® a été créée il y a plus de 10 ans, dans un contexte où les administrations fiscales du monde entier ont décidé d’utiliser la transformation numérique pour organiser le Contrôle Continu de la TVA des entreprises, en imposant des régimes de « Déclaration électronique Continue des Données Transactionnelles », dits « DCTR ».</p>
+
+          <p>Dans ce contexte mondial, <b>LAWREVAT® a alors été la première LEGALTECH</b> ayant compris l’impérieuse nécessité d’organiser la réunion du métier traditionnel de la profession d’avocat spécialisé dans la pratique réglementée de la « TVA », avec des métiers innovants du monde de la Tech’. </p>
+
+          <p>Pour répondre à ce besoin, <b>LAWREVAT® a été la première LEGALTECH</b> à comprendre l’intérêt d’inscrire ses travaux de recherches et le développement dans la continuité des travaux de Maurice Lauré, l’inventeur français de la TVA dont l’invention couvre désormais 95% de la population du globe. En effet, Maurice Lauré a été le premier a théorisé le lien entre un modèle informatique et son impact sur le raisonnement TVA. </p>
+
+          <p><b>LAWREVAT® est donc devenue la première LEGALTECH ayant une démarche tant scientifique que pratique, dédiée aux pratiques numériques de la TVA.</b> Fort de cette démarche, LAWREVAT® est en mesure de fournir aux entreprises, à leurs conseils TVA et à leurs prestataires informatiques des solutions technologiques innovantes et uniques </p>
+
+          <p>Nos solutions reposent sur des modèles informatiques de gestion de TVA qui sont personnalisés et qui fournissent un contrôle de fiabilité et une aide à la décision, <b>en temps réel</b></p>
+
+          <p>A partir du 1er septembre 2026, avec la Réforme de la Facturation Electronique qui est l’expression du régime de Contrôle Continu « DCTR » français, plus de 4.000.000 d’entreprises vont se connecter à l’administration fiscale, via leur Plateforme Agréée. </p>
+
+          <p>Cette connexion est organisée autour d’un nouveau modèle informatique en « Y », qui permet désormais aux services fiscaux de contrôler la TVA en temps réel.</p>
+
+          <p> Cette réforme est donc le point de départ d’une révolution historique majeure de la pratique de la TVA  car elle interroge la pertinence et la fiabilité de toutes les pratiques qui ne reposeraient pas sur un modèle informatique de gestion de la TVA « en temps réel avec aide à la décision ». </p>
+
+          <p><b>Dans ce contexte, la facturation électronique met en avant le besoin incontournable de ces millions d’entreprises et de tous les acteurs du droit et de l’informatique qui les accompagnent de bénéficier des solutions et des outils développés par la LEGALTECH LAWREVAT®, grâce à son positionnement innovant unique associant la technologie et l’exercice réglementé du droit de la TVA. </b></p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer id="contact" style="background:var(--navy);color:#fff;">
+      <div style="max-width:1240px;margin:0 auto;padding:84px 40px 48px">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px">
+          <div>
+            <div style="font-family:var(--serif);font-size:34px;font-weight:600;letter-spacing:0.04em">LAWRE<span style="color:#fff;opacity:.55">VAT</span></div>
+            <p style="font-family:var(--sans);font-size:15px;line-height:1.6;color:rgba(255,255,255,.72);max-width:34ch;margin:20px 0 0">Legal tech experte en TVA. Avocats fiscalistes et technologie, au service de votre conformité.</p>
+            <a href="https://lawrevat.io" class="btn-primary" style="display:inline-block;margin-top:28px;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);background:#fff;padding:15px 28px;text-decoration:none;transition:filter .25s ease">Accéder à l'espace client</a>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:rgba(255,255,255,.5);margin-bottom:18px">CONTACT</div>
+            <div style="font-family:var(--sans);font-size:15px;line-height:2;color:rgba(255,255,255,.85)">contact@lawrevat.fr<br>+33 1 84 00 00 00<br>12 rue de la Paix, Paris</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:rgba(255,255,255,.5);margin-bottom:18px">EXPERTISE</div>
+            <div style="font-family:var(--sans);font-size:15px;line-height:2;color:rgba(255,255,255,.85)">Audit TVA<br>Veille &amp; conformité<br>Contentieux<br>e-invoicing</div>
+          </div>
+        </div>
+        <div style="margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55)">
+          <span>© 2026 LAWREVAT — TOUS DROITS RÉSERVÉS</span>
+          <span>MENTIONS LÉGALES · CONFIDENTIALITÉ</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+</div>
+<script>
+  (function () {
+    var activeItem = null;
+    var closeTimer = null;
+    var openTimer = null;
+    var CLOSE_DELAY = 220;
+    var SWITCH_DELAY = 160;
+
+    function openItem(item) {
+      var wrap = item.querySelector('.submenu-wrap');
+      if (!wrap) return;
+      clearTimeout(closeTimer);
+      clearTimeout(openTimer);
+      if (activeItem && activeItem !== item) {
+        var oldWrap = activeItem.querySelector('.submenu-wrap');
+        if (oldWrap) oldWrap.classList.remove('open');
+        activeItem = item;
+        openTimer = setTimeout(function () { wrap.classList.add('open'); }, SWITCH_DELAY);
+      } else {
+        activeItem = item;
+        wrap.classList.add('open');
+      }
+    }
+
+    function scheduleClose(item) {
+      clearTimeout(openTimer);
+      closeTimer = setTimeout(function () {
+        var wrap = item.querySelector('.submenu-wrap');
+        if (wrap) wrap.classList.remove('open');
+        if (activeItem === item) activeItem = null;
+      }, CLOSE_DELAY);
+    }
+
+    document.addEventListener('mouseover', function (e) {
+      var item = e.target.closest && e.target.closest('.nav-item');
+      if (!item || item.contains(e.relatedTarget)) return;
+      openItem(item);
+    });
+
+    document.addEventListener('mouseout', function (e) {
+      var item = e.target.closest && e.target.closest('.nav-item');
+      if (!item || item.contains(e.relatedTarget)) return;
+      scheduleClose(item);
+    });
+  })();
+</script>
+</body>
+</html>
